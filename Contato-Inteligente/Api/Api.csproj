@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Contato_Inteligente</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
