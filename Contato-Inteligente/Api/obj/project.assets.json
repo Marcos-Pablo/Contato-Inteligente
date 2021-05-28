@@ -22,6 +22,15 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
+      "Octokit/0.50.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Octokit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Octokit.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/5.6.3": {
         "type": "package",
         "dependencies": {
@@ -123,6 +132,22 @@
         "microsoft.openapi.nuspec"
       ]
     },
+    "Octokit/0.50.0": {
+      "sha512": "J5vqespSvjxIAAtjG1Tc6ghBqyfRgDJtKnk/ifi4N0hD/f3JbPwyEDRT+Eelu/bS4C4M6mu5gt1WJqar+fByzg==",
+      "type": "package",
+      "path": "octokit/0.50.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net46/Octokit.dll",
+        "lib/net46/Octokit.xml",
+        "lib/netstandard2.0/Octokit.dll",
+        "lib/netstandard2.0/Octokit.xml",
+        "octokit.0.50.0.nupkg.sha512",
+        "octokit.nuspec",
+        "octokit.png"
+      ]
+    },
     "Swashbuckle.AspNetCore/5.6.3": {
       "sha512": "UkL9GU0mfaA+7RwYjEaBFvAzL8qNQhNqAeV5uaWUu/Z+fVgvK9FHkGCpTXBqSQeIHuZaIElzxnLDdIqGzuCnVg==",
       "type": "package",
@@ -189,6 +214,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Octokit >= 0.50.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -238,6 +264,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Octokit": {
+            "target": "Package",
+            "version": "[0.50.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
