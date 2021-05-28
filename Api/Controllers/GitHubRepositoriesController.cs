@@ -19,7 +19,7 @@ namespace Api.Controllers
             try
             {
                 var productInformation = new ProductHeaderValue("Marcos-Pablo");
-                var credentials = new Credentials("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");
+                var credentials = new Credentials("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");
                 var client = new GitHubClient(productInformation) { Credentials = credentials };
 
                 var takeRepositories = await client.Repository.GetAllForUser("takenet");
@@ -30,7 +30,7 @@ namespace Api.Controllers
 
                 return Ok(fiveOlderCSharpRepositories);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Erro interno de servidor");
             }
