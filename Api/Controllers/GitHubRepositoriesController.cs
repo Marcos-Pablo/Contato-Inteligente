@@ -22,7 +22,7 @@ namespace Api.Controllers
             try
             {
                 var productInformation = new ProductHeaderValue("Marcos-Pablo");
-                var credentials = new Credentials("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");
+                var credentials = new Credentials("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");
                 var client = new GitHubClient(productInformation) { Credentials = credentials };
 
                 var takeRepositories = await client.Repository.GetAllForUser("takenet");
