@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Api.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -14,12 +16,13 @@ namespace Api.Controllers
     {
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetFiveOlderCSharpRepositories()
+        public async Task<IActionResult> GetFiveOlderCSharpRepositories(
+            [FromServices] CarroselService carroselService)
         {
             try
             {
                 var productInformation = new ProductHeaderValue("Marcos-Pablo");
-                var credentials = new Credentials("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");
+                var credentials = new Credentials("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");
                 var client = new GitHubClient(productInformation) { Credentials = credentials };
 
                 var takeRepositories = await client.Repository.GetAllForUser("takenet");
@@ -28,7 +31,9 @@ namespace Api.Controllers
                                                     .OrderBy(repo => repo.CreatedAt)
                                                     .Take(5);
 
-                return Ok(fiveOlderCSharpRepositories);
+                var carrosel = carroselService.CreateCarrosel(fiveOlderCSharpRepositories);
+
+                return Ok(carrosel);
             }
             catch (Exception e)
             {
