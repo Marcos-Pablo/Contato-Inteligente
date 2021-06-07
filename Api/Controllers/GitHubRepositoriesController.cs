@@ -14,6 +14,11 @@ namespace Api.Controllers
     [Route("/repositories")]
     public class GitHubRepositoriesController : ControllerBase
     {
+        private readonly IConfiguration _config;
+        public GitHubRepositoriesController(IConfiguration config)
+        {
+            _config = config;
+        }
         [HttpGet]
         [Route("")]
         public async Task<IActionResult> GetFiveOlderCSharpRepositories(
@@ -21,8 +26,10 @@ namespace Api.Controllers
         {
             try
             {
-                var productInformation = new ProductHeaderValue("Marcos-Pablo");
-                var credentials = new Credentials("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");
+                string token = _config["AppSettings:token"];
+                string login = _config["AppSettings:login"];
+                var productInformation = new ProductHeaderValue(login);
+                var credentials = new Credentials(token);
                 var client = new GitHubClient(productInformation) { Credentials = credentials };
 
                 var takeRepositories = await client.Repository.GetAllForUser("takenet");
