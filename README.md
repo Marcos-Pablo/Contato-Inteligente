@@ -1,5 +1,7 @@
 # Contato Inteligente
 
+## API
+
 Este projeto tem como objetivo buscar os 5 repositórios mais antigos escritos em C#
 da Take.
 
@@ -21,5 +23,9 @@ Segredos de usuário podem ser configurados no arquivo secrets.json através do me
 }
 ```
 
+## Chatbot
 
+O arquivo JSON do chatbot está disponível na pasta Flow que pode ser encontrada na raíz do projeto.
+
+O chatbot faz requisição para uma versão dessa API publicada no Heroku através do docker, o endpoint está disponível em https://contato-inteligente-api.herokuapp.com/repositories
 
