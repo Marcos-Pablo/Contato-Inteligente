@@ -1,5 +1,4 @@
-﻿using Api.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Octokit;
@@ -21,8 +20,7 @@ namespace Api.Controllers
         }
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetFiveOlderCSharpRepositories(
-            [FromServices] CarroselService carroselService)
+        public async Task<IActionResult> GetFiveOlderCSharpRepositories()
         {
             try
             {
@@ -38,9 +36,7 @@ namespace Api.Controllers
                                                     .OrderBy(repo => repo.CreatedAt)
                                                     .Take(5);
 
-                var carrosel = carroselService.CreateCarrosel(fiveOlderCSharpRepositories);
-
-                return Ok(carrosel);
+                return Ok(fiveOlderCSharpRepositories);
             }
             catch (Exception e)
             {
